@@ -30,12 +30,12 @@ export default {
     },
     methods: {
         _input(e) {
-            this.input(e);
+            this.input ? this.input(e) : 0;
             const text = this.$refs.editable.innerText;
             this.$emit('update:text', text)
         },
         async _keyup(e) {
-            this.keyup(e);
+            this.keyup ? this.keyup(e) : 0;
             
             
             function setCursorAtEnd(el) {
@@ -59,25 +59,24 @@ export default {
             }
         },
         _keydown(e) {
-            this.keydown(e);
+            this.keydown ? this.keydown(e) : 0;
             if(this.count > this.maxlength) {
                 e.preventDefault();
                 this.isFocused = true;
             }
         },
         _focus(e) {
-            this.focus(e);
+            this.focus ? this.focus(e) : 0;
             this.isFocused = true;
         },
         _blur(e) {
-            this.blur(e);
+            this.blur ? this.blur(e) : 0;
             this.isFocused = false;
-
         },
         
         _paste(e) {
             e.preventDefault();
-            this.paste(e);
+            this.paste ? this.paste(e) : 0;
 
             function HTMLtoPlainTextWhenPaste() {
                 e.preventDefault();
@@ -93,7 +92,7 @@ export default {
     watch: {
         text(newVal) {
             if(!this.isFocused)
-                this.$refs.editable.innerText = newVal;
+                this.$refs.editable.innerHTML = newVal || '';
         },
         isFocused(newVal) {
             if(newVal) this.$refs.editable.focus();
@@ -102,7 +101,7 @@ export default {
     },
 
     mounted() {
-        this.$refs.editable.innerText = this.text;
+        this.$refs.editable.innerHTML = this.text || '';
     }
 }
 </script>
