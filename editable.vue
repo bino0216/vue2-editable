@@ -31,7 +31,7 @@ export default {
     methods: {
         _input(e) {
             this.input ? this.input(e) : 0;
-            const text = this.$refs.editable.innerText;
+            const text = this.$refs.editable.innerHTML;
             this.$emit('update:text', text)
         },
         async _keyup(e) {
