@@ -29,6 +29,3 @@ if you want to apply contenteditable to Vue 2, it is not bad alternative.
 this is extremely lightweight and no room for updates.
 its mean that not worth adding to dependencies, so i didnt add to npm.
 all you have to do is add the code as your component.
-
-# support
-vue@2.3 ~ 3
